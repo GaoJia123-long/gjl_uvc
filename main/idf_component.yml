@@ -1,0 +1,13 @@
+
+dependencies:
+
+  idf:
+    version: '>=4.1.0'
+
+  espressif/usb_host_uvc:
+    version: "^2.2.0"
+
+  espressif/esp_wifi_remote:
+    version: ^0.5.4
+    rules:
+      - if: "${IDF_TARGET} == esp32p4"

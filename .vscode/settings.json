@@ -1,0 +1,13 @@
+{
+    "idf.customExtraVars": {
+        "IDF_TARGET": "esp32p4"
+    },
+    "idf.openOcdConfigs": [
+        "board/esp32p4-ftdi.cfg"
+    ],
+    "idf.portWin": "COM14",
+    "idf.flashType": "UART",
+    "files.associations": {
+        "string.h": "c"
+    }
+}
