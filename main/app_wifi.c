@@ -111,13 +111,16 @@ void app_wifi_init(void)
     esp_netif_t *wifi_ap_netif = NULL;
     esp_netif_t *wifi_sta_netif = NULL;
     if (strlen(EXAMPLE_ESP_WIFI_AP_SSID) && strlen(EXAMPLE_ESP_WIFI_SSID)) {
+        ESP_LOGE(TAG,"WIFI_MODE_APSTA");
         mode = WIFI_MODE_APSTA;
         wifi_ap_netif = esp_netif_create_default_wifi_ap();
         wifi_sta_netif = esp_netif_create_default_wifi_sta();
     } else if (strlen(EXAMPLE_ESP_WIFI_AP_SSID)) {
+        ESP_LOGE(TAG,"WIFI_MODE_AP");
         mode = WIFI_MODE_AP;
         wifi_ap_netif = esp_netif_create_default_wifi_ap();
     } else if (strlen(EXAMPLE_ESP_WIFI_SSID)) {
+        ESP_LOGE(TAG,"WIFI_MODE_STA");
         mode = WIFI_MODE_STA;
         wifi_sta_netif = esp_netif_create_default_wifi_sta();
     }
@@ -129,8 +132,8 @@ void app_wifi_init(void)
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
-    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
-    ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
+    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));//连接成功，断开连接，获取ip等触发
+    ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));//ip地址成功，ip地址等丢失，触发
     ESP_ERROR_CHECK(esp_wifi_set_mode(mode));
     ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_FLASH));
     if (mode & WIFI_MODE_AP) {

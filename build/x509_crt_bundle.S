@@ -1,4 +1,4 @@
-/* * Data converted from C:/Users/Shine/Desktop/gjl_uvc/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from C:/Users/gaojialong/Desktop/sh/gjl_uvc/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)

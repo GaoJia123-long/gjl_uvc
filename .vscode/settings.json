@@ -5,9 +5,10 @@
     "idf.openOcdConfigs": [
         "board/esp32p4-ftdi.cfg"
     ],
-    "idf.portWin": "COM14",
+    "idf.portWin": "COM16",
     "idf.flashType": "UART",
     "files.associations": {
-        "string.h": "c"
+        "string.h": "c",
+        "app_uvc.h": "c"
     }
 }
