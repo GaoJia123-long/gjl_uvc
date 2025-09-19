@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "app_main",
-    "project_version":    "01fa069-dirty",
+    "project_version":    "1.4",
     "project_path":       "C:/Users/gaojialong/Desktop/sh/gjl_uvc",
     "idf_path":           "C:/Users/gaojialong/esp/v5.5.1/esp-idf",
     "build_dir":          "C:/Users/gaojialong/Desktop/sh/gjl_uvc/build",

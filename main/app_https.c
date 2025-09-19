@@ -5,6 +5,8 @@
 #include "esp_http_server.h"
 #include "app_uvc.h"
 #include "esp_spiffs.h"
+#include "esp_ota_ops.h"
+#include "esp_app_format.h"
 
 #define TAG "HTTP_SERVER"
 
@@ -69,13 +71,20 @@ static esp_err_t static_file_handler(httpd_req_t *req)
     char filepath[1024];
     char filepath_gz[1024];
 
-    snprintf(filepath, sizeof(filepath), "/webserver%s", req->uri);
-    snprintf(filepath_gz, sizeof(filepath_gz), "/webserver%s.gz", req->uri);
+    // 如果是API请求，不处理
+    if (strncmp(uri, "/api/", 5) == 0) {
+        httpd_resp_send_404(req);
+        return ESP_FAIL;
+    }
 
-    if (strcmp(uri, "/") == 0) {
+    // 如果是根路径或Vue Router路径，返回index.html
+    if (strcmp(uri, "/") == 0 || strcmp(uri, "/ota") == 0) {
         snprintf(filepath, sizeof(filepath), "%s/index.html", STATIC_PATH);
         snprintf(filepath_gz, sizeof(filepath_gz), "%s/index.html.gz", STATIC_PATH);
     } else {
+        snprintf(filepath, sizeof(filepath), "/webserver%s", req->uri);
+        snprintf(filepath_gz, sizeof(filepath_gz), "/webserver%s.gz", req->uri);
+        
         snprintf(filepath, sizeof(filepath), "%s%s", STATIC_PATH, uri);
         snprintf(filepath_gz, sizeof(filepath_gz), "%s%s.gz", STATIC_PATH, uri);
     }
@@ -85,8 +94,18 @@ static esp_err_t static_file_handler(httpd_req_t *req)
 
     if (!file_gz && !file) {
         ESP_LOGE(TAG, "File not found: %s", filepath);
-        httpd_resp_send_404(req);
-        return ESP_FAIL;
+        // 对于Vue Router，如果文件不存在，也返回index.html
+        if (strcmp(uri, "/ota") == 0) {
+            snprintf(filepath, sizeof(filepath), "%s/index.html", STATIC_PATH);
+            snprintf(filepath_gz, sizeof(filepath_gz), "%s/index.html.gz", STATIC_PATH);
+            file = fopen(filepath, "r");
+            file_gz = fopen(filepath_gz, "r");
+        }
+        
+        if (!file_gz && !file) {
+            httpd_resp_send_404(req);
+            return ESP_FAIL;
+        }
     }
 
     if (file_gz) {
@@ -270,6 +289,94 @@ static esp_err_t get_stream_handler(httpd_req_t *req)
     return res;
 }
 
+static esp_err_t get_ota_info_handler(httpd_req_t *req)
+{
+    char response[512];
+    esp_app_desc_t app_info;
+    esp_ota_get_partition_description(esp_ota_get_running_partition(), &app_info);
+    
+    size_t free_space = 0;
+    const esp_partition_t *ota_partition = esp_ota_get_next_update_partition(NULL);
+    if (ota_partition) {
+        free_space = ota_partition->size;
+    }
+    
+    int len = snprintf(response, sizeof(response),
+        "{\"version\":\"%s\",\"buildDate\":\"%s %s\",\"freeSpace\":\"%zu bytes\"}",
+        app_info.version,
+        app_info.date,
+        app_info.time,
+        free_space);
+    
+    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+    httpd_resp_set_type(req, "application/json");
+    httpd_resp_send(req, response, len);
+    return ESP_OK;
+}
+
+static esp_err_t post_ota_update_handler(httpd_req_t *req)
+{
+    char buf[1024];
+    int ret, remaining = req->content_len;
+    const esp_partition_t *ota_partition = esp_ota_get_next_update_partition(NULL);
+    
+    if (!ota_partition) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "No OTA partition found");
+        return ESP_FAIL;
+    }
+    
+    esp_ota_handle_t ota_handle;
+    esp_err_t err = esp_ota_begin(ota_partition, OTA_SIZE_UNKNOWN, &ota_handle);
+    if (err != ESP_OK) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA begin failed");
+        return ESP_FAIL;
+    }
+    
+    while (remaining > 0) {
+        ret = httpd_req_recv(req, buf, MIN(remaining, sizeof(buf)));
+        if (ret <= 0) {
+            if (ret == HTTPD_SOCK_ERR_TIMEOUT) {
+                continue;
+            }
+            esp_ota_abort(ota_handle);
+            httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA receive failed");
+            return ESP_FAIL;
+        }
+        
+        err = esp_ota_write(ota_handle, buf, ret);
+        if (err != ESP_OK) {
+            esp_ota_abort(ota_handle);
+            httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA write failed");
+            return ESP_FAIL;
+        }
+        
+        remaining -= ret;
+    }
+    
+    err = esp_ota_end(ota_handle);
+    if (err != ESP_OK) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA end failed");
+        return ESP_FAIL;
+    }
+    
+    err = esp_ota_set_boot_partition(ota_partition);
+    if (err != ESP_OK) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "OTA set boot partition failed");
+        return ESP_FAIL;
+    }
+    
+    httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+    httpd_resp_set_type(req, "application/json");
+    httpd_resp_send(req, "{\"status\":\"success\"}", HTTPD_RESP_USE_STRLEN);
+    
+    // 延迟重启
+    vTaskDelay(5000 / portTICK_PERIOD_MS);
+    esp_restart();
+    
+    return ESP_OK;
+}
+
+
 static esp_err_t start_webserver(void)
 {
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
@@ -315,6 +422,20 @@ static esp_err_t start_webserver(void)
         .user_ctx = NULL
     };
 
+    httpd_uri_t ota_info_get = {
+        .uri = "/api/ota/info",
+        .method = HTTP_GET,
+        .handler = get_ota_info_handler,
+        .user_ctx = NULL
+    };
+
+    httpd_uri_t ota_update_post = {
+        .uri = "/api/ota/update",
+        .method = HTTP_POST,
+        .handler = post_ota_update_handler,
+        .user_ctx = NULL
+    };
+
     httpd_handle_t server_80 = NULL;
 
     config.core_id = 0;
@@ -323,6 +444,8 @@ static esp_err_t start_webserver(void)
         httpd_register_uri_handler(server_80, &cameras_get);
         httpd_register_uri_handler(server_80, &api_404_get);
         httpd_register_uri_handler(server_80, &stream_get);
+        httpd_register_uri_handler(server_80, &ota_info_get);
+        httpd_register_uri_handler(server_80, &ota_update_post);
         httpd_register_uri_handler(server_80, &static_handler);
     } else {
         goto exit;
@@ -339,6 +462,8 @@ static esp_err_t start_webserver(void)
         httpd_register_uri_handler(server_8080, &cameras_get);
         httpd_register_uri_handler(server_8080, &api_404_get);
         httpd_register_uri_handler(server_8080, &stream_get);
+        httpd_register_uri_handler(server_8080, &ota_info_get);
+        httpd_register_uri_handler(server_8080, &ota_update_post);
         httpd_register_uri_handler(server_8080, &static_handler);
     } else {
         goto exit;

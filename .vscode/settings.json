@@ -10,5 +10,8 @@
     "files.associations": {
         "string.h": "c",
         "app_uvc.h": "c"
-    }
+    },
+    "idf.espIdfPathWin": "C:\\Users\\gaojialong\\esp\\v5.5.1\\esp-idf",
+    "idf.toolsPathWin": "C:\\Users\\gaojialong\\.espressif",
+    "idf.pythonInstallPath": "C:\\Users\\gaojialong\\.espressif\\tools\\idf-python\\3.11.2\\python.exe"
 }
