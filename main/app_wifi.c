@@ -111,12 +111,12 @@ void app_wifi_init(void)
     esp_netif_t *wifi_ap_netif = NULL;
     esp_netif_t *wifi_sta_netif = NULL;
     if (strlen(EXAMPLE_ESP_WIFI_AP_SSID) && strlen(EXAMPLE_ESP_WIFI_SSID)) {
-        ESP_LOGI(TAG,"WIFI_MODE_APSTA,wbbb");
+        ESP_LOGI(TAG,"WIFI_MODE_APSTA");
         mode = WIFI_MODE_APSTA;
         wifi_ap_netif = esp_netif_create_default_wifi_ap();
         wifi_sta_netif = esp_netif_create_default_wifi_sta();
     } else if (strlen(EXAMPLE_ESP_WIFI_AP_SSID)) {
-        ESP_LOGI(TAG,"WIFI_MODE_AP,wbbb");
+        ESP_LOGI(TAG,"WIFI_MODE_AP");
         mode = WIFI_MODE_AP;
         wifi_ap_netif = esp_netif_create_default_wifi_ap();
     } else if (strlen(EXAMPLE_ESP_WIFI_SSID)) {

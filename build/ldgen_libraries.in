@@ -74,6 +74,7 @@ $<TARGET_FILE:__idf_espressif__eppp_link>
 $<TARGET_FILE:__idf_esp_eth>
 $<TARGET_FILE:__idf_espressif__esp_serial_slave_link>
 $<TARGET_FILE:__idf_espressif__esp_hosted>
+$<TARGET_FILE:__idf_bt>
 $<TARGET_FILE:__idf_console>
 $<TARGET_FILE:__idf_esp_https_ota>
 $<TARGET_FILE:__idf_esp_security>
@@ -112,6 +113,7 @@ $<TARGET_FILE:idf::nvs_flash>
 $<TARGET_FILE:idf::esp_wifi>
 $<TARGET_FILE:idf::esp_driver_spi>
 $<TARGET_FILE:idf::esp_gdbstub>
+$<TARGET_FILE:idf::bt>
 $<TARGET_FILE:idf::unity>
 $<TARGET_FILE:idf::cmock>
 $<TARGET_FILE:__idf_unity>

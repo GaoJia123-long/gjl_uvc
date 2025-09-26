@@ -5,13 +5,13 @@
     "idf.openOcdConfigs": [
         "board/esp32p4-ftdi.cfg"
     ],
-    "idf.portWin": "COM16",
+    "idf.portWin": "COM17",
     "idf.flashType": "UART",
     "files.associations": {
         "string.h": "c",
         "app_uvc.h": "c"
     },
-    "idf.espIdfPathWin": "C:\\Users\\gaojialong\\esp\\v5.5.1\\esp-idf",
-    "idf.toolsPathWin": "C:\\Users\\gaojialong\\.espressif",
-    "idf.pythonInstallPath": "C:\\Users\\gaojialong\\.espressif\\tools\\idf-python\\3.11.2\\python.exe"
+    "idf.espIdfPathWin": "c:\\Users\\Shine\\esp\\v5.5.1\\esp-idf",
+    "idf.toolsPathWin": "E:\\Espressif",
+    "idf.pythonInstallPath": "E:\\Espressif\\tools\\idf-python\\3.11.2\\python.exe"
 }

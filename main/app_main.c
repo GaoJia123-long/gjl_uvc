@@ -6,6 +6,7 @@
 #include "app_uvc.h"
 #include "esp_log.h"
 #include "esp_ota_ops.h" 
+#include "ble_app.h"
 
 #define TAG "app_main"
 
