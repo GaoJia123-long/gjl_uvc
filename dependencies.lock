@@ -1,6 +1,6 @@
 dependencies:
   espressif/eppp_link:
-    component_hash: 587abf150563ee0efeeba88e3c7cf46675ab5bd752a788f4b9c88a54649221dd
+    component_hash: 24fa36b363cbf5f9321817fca0be15777d59e24e947ece66092691c89a7cf1f1
     dependencies:
     - name: espressif/esp_serial_slave_link
       registry_url: https://components.espressif.com
@@ -12,9 +12,9 @@ dependencies:
     source:
       registry_url: https://components.espressif.com
       type: service
-    version: 1.1.0
+    version: 1.1.2
   espressif/esp_hosted:
-    component_hash: 1f39f179b1776f6b2535eab904629325bbf0191b3bb6506b3de3fa9756a831aa
+    component_hash: 34d46b0c50e32f9059338f19a6bae2ac1206bfe234f8d6aa365e925ef03f5030
     dependencies:
     - name: idf
       require: private
@@ -22,9 +22,9 @@ dependencies:
     source:
       registry_url: https://components.espressif.com
       type: service
-    version: 2.3.3
+    version: 2.5.3
   espressif/esp_serial_slave_link:
-    component_hash: d8c13c033a7604e9333b5d8ea45e0d6fec908fd552df7db20d33dd8d6916528d
+    component_hash: 7cd3bae703cc6136b578ef521b2f9df3171d029775a3558f0efdb200a3b04f57
     dependencies:
     - name: idf
       require: private
@@ -32,7 +32,7 @@ dependencies:
     source:
       registry_url: https://components.espressif.com
       type: service
-    version: 1.1.0~1
+    version: 1.1.1~1
   espressif/esp_wifi_remote:
     component_hash: c72537a89dfb9a894d0e5b1560bf688d8d84b233802e4f90df668a8091fdd1b2
     dependencies:
@@ -67,10 +67,17 @@ dependencies:
     source:
       type: idf
     version: 5.5.1
+  nimble_peripheral_utils:
+    dependencies: []
+    source:
+      path: C:\Users\Shine\esp\v5.5.1\esp-idf\examples\bluetooth\nimble\common\nimble_peripheral_utils
+      type: local
+    version: '*'
 direct_dependencies:
 - espressif/esp_wifi_remote
 - espressif/usb_host_uvc
 - idf
-manifest_hash: 215ffcb16f2cb79b4c06c6ba52369302ed41567458933fd95ec01dcd904ae68f
+- nimble_peripheral_utils
+manifest_hash: 5d2357bcc1a2aef33de7f3724eaa8b719e8823d97e3bcf6fcc7db86c4226efcf
 target: esp32p4
 version: 2.0.0

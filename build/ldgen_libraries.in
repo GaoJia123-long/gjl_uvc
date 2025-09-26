@@ -174,5 +174,7 @@ $<TARGET_FILE:idf::espressif__esp_hosted>
 $<TARGET_FILE:idf::espressif__esp_wifi_remote>
 $<TARGET_FILE:idf::espressif__usb_host_uvc>
 $<TARGET_FILE:__idf_usb>
+$<TARGET_FILE:idf::nimble_peripheral_utils>
 $<TARGET_FILE:idf::main>
 $<TARGET_FILE:__idf_espressif__usb_host_uvc>
+$<TARGET_FILE:__idf_nimble_peripheral_utils>

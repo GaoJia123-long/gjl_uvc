@@ -6,7 +6,7 @@
 #include "app_uvc.h"
 #include "esp_log.h"
 #include "esp_ota_ops.h" 
-#include "ble_app.h"
+#include "app_ble.h" 
 
 #define TAG "app_main"
 
@@ -28,4 +28,5 @@ void app_main(void)
     app_wifi_init();
     app_https_init();
     app_uvc_init();
+    app_ble_init();
 }
