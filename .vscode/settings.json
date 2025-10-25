@@ -1,17 +1,10 @@
 {
-    "idf.customExtraVars": {
-        "IDF_TARGET": "esp32p4"
-    },
-    "idf.openOcdConfigs": [
-        "board/esp32p4-ftdi.cfg"
-    ],
-    "idf.portWin": "COM15",
-    "idf.flashType": "UART",
-    "files.associations": {
-        "string.h": "c",
-        "app_uvc.h": "c"
-    },
-    "idf.espIdfPathWin": "c:\\Users\\Shine\\esp\\v5.5.1\\esp-idf",
-    "idf.toolsPathWin": "E:\\Espressif",
-    "idf.pythonInstallPath": "E:\\Espressif\\tools\\idf-python\\3.11.2\\python.exe"
+  "idf.openOcdConfigs": [
+    "board/esp32p4-ftdi.cfg"
+  ],
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32p4"
+  },
+  "idf.flashType": "UART",
+  "idf.portWin": "COM22"
 }

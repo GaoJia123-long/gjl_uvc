@@ -13,6 +13,13 @@
 #include "app_uvc.h"
 #include "esp_timer.h"
 
+#include "app_lcd.h"
+#include "lvgl.h"
+#include <string.h>
+#include <stdlib.h>
+#include "driver/jpeg_decode.h"
+
+
 #define UVC_CAM_NUM             MAX_CAMERAS
 
 #if CONFIG_SPIRAM
@@ -121,15 +128,19 @@ static void uvc_task(void *arg)
     ESP_ERROR_CHECK(uvc_open(dev, dev->require_frame_index));
 
     bool exit = false;
-    while (!exit) {
+    while (!exit) 
+    {
         EventBits_t uxBits = xEventGroupWaitBits(dev->event_group, EVENT_ALL, pdTRUE, pdFALSE, portMAX_DELAY);
 
-        if (uxBits & EVENT_START) {
-            if (dev->if_streaming) {
+        if (uxBits & EVENT_START) 
+        {
+            if (dev->if_streaming) 
+            {
                 continue;
             }
 
-            uvc_host_stream_format_t vs_format = {
+            uvc_host_stream_format_t vs_format = 
+            {
                 .h_res = dev->frame_info[dev->require_frame_index].h_res,
                 .v_res = dev->frame_info[dev->require_frame_index].v_res,
                 .fps = UVC_DESC_DWFRAMEINTERVAL_TO_FPS(dev->frame_info[dev->require_frame_index].default_interval),
@@ -141,21 +152,25 @@ static void uvc_task(void *arg)
             dev->if_streaming = true;
         }
 
-        if (uxBits & EVENT_STOP) {
-            if (!dev->if_streaming) {
+        if (uxBits & EVENT_STOP) 
+        {
+            if (!dev->if_streaming) 
+            {
                 continue;
             }
 
             ESP_LOGI(TAG, "uvc end to stream");
             ESP_ERROR_CHECK(uvc_host_stream_stop(dev->stream));
             uvc_host_frame_t *frame = NULL;
-            while (xQueueReceive(dev->frame_queue, &frame, 0) == pdTRUE) {
+            while (xQueueReceive(dev->frame_queue, &frame, 0) == pdTRUE) 
+            {
                 uvc_host_frame_return(dev->stream, frame);
             }
             dev->if_streaming = false;
         }
 
-        if (uxBits & EVENT_DISCONNECT) {
+        if (uxBits & EVENT_DISCONNECT) 
+        {
             exit = true;
         }
     }
@@ -253,6 +268,9 @@ void stream_callback(const uvc_host_stream_event_data_t *event, void *user_ctx)
     }
 }
 
+
+
+
 bool frame_callback(const uvc_host_frame_t *frame, void *user_ctx)
 {
 
@@ -273,9 +291,16 @@ bool frame_callback(const uvc_host_frame_t *frame, void *user_ctx)
         return true;
     }
 
+    //new
+ 
+
+    //new
+
     // If we return false from this callback, we must return the frame with uvc_host_frame_return(stream, frame);
     return false;
 }
+
+
 
 static esp_err_t uvc_open(uvc_dev_t *dev, int frame_index)
 {

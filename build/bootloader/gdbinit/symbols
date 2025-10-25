@@ -17,4 +17,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file C:/Users/Shine/Desktop/gjl_uvc/build/bootloader/bootloader.elf
+file E:/workst/RoastSensePRO/build/bootloader/bootloader.elf

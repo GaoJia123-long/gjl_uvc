@@ -1,32 +1,79 @@
 
-#include <stdio.h>
-#include "esp_log.h"
+
+#include "sdkconfig.h"              
 #include "app_https.h"
 #include "app_wifi.h"
 #include "app_uvc.h"
-#include "esp_log.h"
 #include "esp_ota_ops.h" 
 #include "app_ble.h" 
+#include "app_lcd.h"
+#include "esp_lcd_co5300.h"
+#include "esp_lcd_touch_cst9217.h"
+#include "nvs_flash.h"
+#include "esp_timer.h"
+
 
 #define TAG "app_main"
 
+
+
+
+
+/**********************************************************************************************************************************/
+/****************************************************** Main **********************************************************************/
+/**********************************************************************************************************************************/
 void app_main(void)
 {
+    // /********************* Initialization *********************************/
+    ESP_LOGI(TAG, "Initialize Flash");
+    nvs_flash_init();
 
-    // 获取应用信息
-    const esp_app_desc_t *app_desc = esp_app_get_description();
-    
-    // 打印版本信息
-    ESP_LOGI(TAG, "========================================");
-    ESP_LOGI(TAG, "ESP32 Camera System with OTA");
-    ESP_LOGI(TAG, "Build Version: %s", app_desc->version);
-    ESP_LOGI(TAG, "Build Date: %s %s", app_desc->date, app_desc->time);
-    ESP_LOGI(TAG, "IDF Version: %s", app_desc->idf_ver);
-    ESP_LOGI(TAG, "========================================");
-
-    
+    ESP_LOGI(TAG, "Initialize WiFi");
     app_wifi_init();
+    ESP_LOGI(TAG, "Initialize Https");
     app_https_init();
+    ESP_LOGI(TAG, "Initialize UVC");
     app_uvc_init();
+    ESP_LOGI(TAG, "Initialize BLE");
     app_ble_init();
+
+    
+    ESP_LOGI(TAG, "Initialize LCD");
+    init_lcd_lvgl();
+
+    ESP_LOGI(TAG, "Create LVGL Tasks");
+    xTaskCreatePinnedToCore(example_lvgl_port_task,"LVGL", (12*1024 / sizeof(StackType_t)) ,NULL,1,NULL,1);
+   
+
+    while(1)
+    {
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+    
 }
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

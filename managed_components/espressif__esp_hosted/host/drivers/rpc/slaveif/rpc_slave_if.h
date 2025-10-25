@@ -409,7 +409,11 @@ typedef struct Ctrl_cmd_t {
 #if H_WIFI_HE_SUPPORT
 		wifi_twt_config_t           wifi_twt_config;
 
+#if H_WIFI_HE_GREATER_THAN_ESP_IDF_5_3
 		wifi_itwt_setup_config_t    wifi_itwt_setup_config;
+#else
+		wifi_twt_setup_config_t     wifi_twt_setup_config;
+#endif
 
 		int                         wifi_itwt_flow_id;
 
@@ -658,6 +662,10 @@ ctrl_cmd_t * rpc_slaveif_ota_write(ctrl_cmd_t *req);
  * sets newly written OTA partition as boot partition for next boot,
  * Creates timer which reset ESP32 after 5 sec */
 ctrl_cmd_t * rpc_slaveif_ota_end(ctrl_cmd_t *req);
+
+/* Performs an OTA activate operation for ESP32, It reboots the ESP32
+ * to activate the newly written OTA partition */
+ctrl_cmd_t * rpc_slaveif_ota_activate(ctrl_cmd_t *req);
 
 /* Gets the co-processor FW Version */
 ctrl_cmd_t * rpc_slaveif_get_coprocessor_fwversion(ctrl_cmd_t *req);

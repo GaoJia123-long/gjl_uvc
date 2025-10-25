@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Shine/Desktop/gjl_uvc/managed_components/espressif__usb_host_uvc
+# Install script for directory: E:/workst/RoastSensePRO/managed_components/espressif__usb_host_uvc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

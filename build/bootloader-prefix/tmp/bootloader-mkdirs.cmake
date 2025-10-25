@@ -10,18 +10,18 @@ if(NOT EXISTS "C:/Users/Shine/esp/v5.5.1/esp-idf/components/bootloader/subprojec
   file(MAKE_DIRECTORY "C:/Users/Shine/esp/v5.5.1/esp-idf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "C:/Users/Shine/Desktop/gjl_uvc/build/bootloader"
-  "C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix"
-  "C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/tmp"
-  "C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp"
-  "C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src"
-  "C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp"
+  "E:/workst/RoastSensePRO/build/bootloader"
+  "E:/workst/RoastSensePRO/build/bootloader-prefix"
+  "E:/workst/RoastSensePRO/build/bootloader-prefix/tmp"
+  "E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp"
+  "E:/workst/RoastSensePRO/build/bootloader-prefix/src"
+  "E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

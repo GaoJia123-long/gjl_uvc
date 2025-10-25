@@ -13,8 +13,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file C:/Users/Shine/Desktop/gjl_uvc/build/bootloader/bootloader.elf
+    add-symbol-file E:/workst/RoastSensePRO/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file C:/Users/Shine/Desktop/gjl_uvc/build/app_main.elf
+file E:/workst/RoastSensePRO/build/app_main.elf

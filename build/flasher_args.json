@@ -9,16 +9,16 @@
     },
     "flash_files" : {
         "0x2000" : "bootloader/bootloader.bin",
-        "0x20000" : "app_main.bin",
+        "0x80000" : "app_main.bin",
         "0x8000" : "partition_table/partition-table.bin",
-        "0x200000" : "ota_data_initial.bin",
-        "0x140000" : "storage.bin"
+        "0x77000" : "ota_data_initial.bin",
+        "0x17000" : "storage.bin"
     },
     "bootloader" : { "offset" : "0x2000", "file" : "bootloader/bootloader.bin", "encrypted" : "false" },
-    "app" : { "offset" : "0x20000", "file" : "app_main.bin", "encrypted" : "false" },
+    "app" : { "offset" : "0x80000", "file" : "app_main.bin", "encrypted" : "false" },
     "partition-table" : { "offset" : "0x8000", "file" : "partition_table/partition-table.bin", "encrypted" : "false" },
-    "otadata" : { "offset" : "0x200000", "file" : "ota_data_initial.bin", "encrypted" : "false" },
-    "storage" : { "offset" : "0x140000", "file" : "storage.bin", "encrypted" : "false" },
+    "otadata" : { "offset" : "0x77000", "file" : "ota_data_initial.bin", "encrypted" : "false" },
+    "storage" : { "offset" : "0x17000", "file" : "storage.bin", "encrypted" : "false" },
     "extra_esptool_args" : {
         "after"  : "hard_reset",
         "before" : "default_reset",

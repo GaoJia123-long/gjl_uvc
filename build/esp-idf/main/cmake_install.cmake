@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Shine/Desktop/gjl_uvc/main
+# Install script for directory: E:/workst/RoastSensePRO/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

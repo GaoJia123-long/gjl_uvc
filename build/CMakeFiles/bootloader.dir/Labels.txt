@@ -1,13 +1,13 @@
 # Target labels
  bootloader
 # Source files and their labels
-C:/Users/Shine/Desktop/gjl_uvc/build/CMakeFiles/bootloader
-C:/Users/Shine/Desktop/gjl_uvc/build/CMakeFiles/bootloader.rule
-C:/Users/Shine/Desktop/gjl_uvc/build/CMakeFiles/bootloader-complete.rule
-C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
-C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
-C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
-C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
-C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
-C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
-C:/Users/Shine/Desktop/gjl_uvc/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+E:/workst/RoastSensePRO/build/CMakeFiles/bootloader
+E:/workst/RoastSensePRO/build/CMakeFiles/bootloader.rule
+E:/workst/RoastSensePRO/build/CMakeFiles/bootloader-complete.rule
+E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+E:/workst/RoastSensePRO/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

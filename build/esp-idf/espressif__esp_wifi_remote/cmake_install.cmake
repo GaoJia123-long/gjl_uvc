@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Shine/Desktop/gjl_uvc/managed_components/espressif__esp_wifi_remote
+# Install script for directory: E:/workst/RoastSensePRO/managed_components/espressif__esp_wifi_remote
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
