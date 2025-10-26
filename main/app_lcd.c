@@ -96,6 +96,11 @@ void init_lcd_lvgl(void *arg)
     ESP_ERROR_CHECK(esp_lcd_panel_reset(panel_handle));
     ESP_ERROR_CHECK(esp_lcd_panel_init(panel_handle));
     ESP_ERROR_CHECK(esp_lcd_panel_set_gap(panel_handle, 22, 0));
+    
+    // Mirror Y-axis to flip display upside-down
+    //ESP_ERROR_CHECK(esp_lcd_panel_mirror(panel_handle, false, true));
+    ESP_LOGI(TAG, "LCD Y-axis mirrored (display flipped)");
+    
     // �ڴ���Ļ�򱳹�֮ǰ���û����Խ�Ԥ�����ͼ��ˢ�µ���Ļ��
     ESP_ERROR_CHECK(esp_lcd_panel_disp_on_off(panel_handle, true));
     // ������Ļ����
@@ -198,30 +203,34 @@ void init_lcd_lvgl(void *arg)
     //���� LVGL API �����̰߳�ȫ�ģ��������������
     if (example_lvgl_lock(-1)) 
     {
+        // Demo widgets disabled - camera feed will be displayed instead
         //lv_demo_widgets();      /* С����ʾ�� */
         //lv_demo_music();        /* ���������ֻ����ִ����ֲ�������ʾ */
         //lv_demo_stress();       /* LVGL ѹ������ */
         //lv_demo_benchmark();    /* ���ڲ��� LVGL ���ܻ�Ƚϲ�ͬ���õ���ʾ */
-static lv_style_t style;
-    lv_style_init(&style);
-    lv_style_set_radius(&style, 5);
 
-    /*Make a gradient*/
-    lv_style_set_width(&style, 150);
-    lv_style_set_height(&style, LV_SIZE_CONTENT);
+        // Set a simple background for camera display
+        lv_obj_set_style_bg_color(lv_scr_act(), lv_color_black(), 0);
 
-    lv_style_set_pad_ver(&style, 20);
-    lv_style_set_pad_left(&style, 5);
+        // Create two blue buttons for color testing
+        lv_obj_t *btn1 = lv_btn_create(lv_scr_act());
+        lv_obj_set_size(btn1, 100, 50);
+        lv_obj_align(btn1, LV_ALIGN_TOP_LEFT, 20, 20);
+        lv_obj_set_style_bg_color(btn1, lv_color_hex(0x0000FF), 0);  // Pure blue
+        lv_obj_t *label1 = lv_label_create(btn1);
+        lv_label_set_text(label1, "Blue1");
+        lv_obj_center(label1);
 
-    lv_style_set_x(&style, lv_pct(50));
-    lv_style_set_y(&style, 80);
+        lv_obj_t *btn2 = lv_btn_create(lv_scr_act());
+        lv_obj_set_size(btn2, 100, 50);
+        lv_obj_align(btn2, LV_ALIGN_TOP_RIGHT, -20, 20);
+        lv_obj_set_style_bg_color(btn2, lv_color_hex(0x0000FF), 0);  // Pure blue
+        lv_obj_t *label2 = lv_label_create(btn2);
+        lv_label_set_text(label2, "Blue2");
+        lv_obj_center(label2);
 
-    /*Create an object with the new style*/
-    lv_obj_t * obj = lv_obj_create(lv_scr_act());
-    lv_obj_add_style(obj, &style, 0);
+        ESP_LOGI(TAG, "Created two blue test buttons");
 
-    lv_obj_t * label = lv_label_create(obj);
-    lv_label_set_text(label, "Hello");
         // �ͷŻ�����
         example_lvgl_unlock();
     }

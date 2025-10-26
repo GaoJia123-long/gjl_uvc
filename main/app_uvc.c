@@ -17,8 +17,23 @@
 #include "lvgl.h"
 #include <string.h>
 #include <stdlib.h>
-#include "driver/jpeg_decode.h"
+#include "esp_video_dec.h"
+#include "esp_video_dec_default.h"
+#include "esp_video_codec_utils.h"
 
+// External LVGL mutex from app_lcd.c
+extern SemaphoreHandle_t lvgl_mux;
+extern esp_lcd_panel_handle_t panel_handle;
+
+// LVGL canvas for displaying camera frame
+static lv_obj_t *camera_canvas = NULL;
+static lv_img_dsc_t camera_img_dsc;
+static uint16_t *camera_frame_buffer = NULL;
+static uint16_t *camera_frame_buffer_back = NULL;  // Back buffer for double buffering
+static volatile bool buffer_ready = false;  // Flag to indicate buffer is ready to swap
+
+// ESP_VIDEO_CODEC decoder handle
+static esp_video_dec_handle_t video_dec_handle = NULL;
 
 #define UVC_CAM_NUM             MAX_CAMERAS
 
@@ -73,7 +88,12 @@ typedef struct {
 
 static uvc_dev_obj_t p_uvc_dev_obj = {0};
 
+// Forward declarations
 static esp_err_t uvc_open(uvc_dev_t *dev, int frame_index);
+static esp_err_t init_video_decoder(void);
+static void init_camera_canvas(int width, int height);
+static void decode_and_display_frame(const uint8_t *jpg_data, size_t jpg_size);
+static void frame_display_task(void *arg);
 
 static void usb_lib_task(void *arg)
 {
@@ -122,10 +142,44 @@ static void uvc_task(void *arg)
     SLIST_INSERT_HEAD(&p_uvc_dev_obj.uvc_devices_list, dev, list_entry);
     p_uvc_dev_obj.uvc_dev_num++;
 
-    // first open
-    dev->require_frame_index = 0;
+    // first open - select 320x240 resolution (Frame Index 10 in device descriptor)
+    // Find the frame index for 320x240 resolution
+    int target_frame_index = 0;
+    bool found_target_res = false;
+    ESP_LOGI(TAG, "Searching for 320x240 in %d MJPEG frames", dev->frame_info_num);
+    for (int i = 0; i < dev->frame_info_num; i++) {
+        ESP_LOGI(TAG, "  Frame[%d]: %dx%d", i, dev->frame_info[i].h_res, dev->frame_info[i].v_res);
+        if (dev->frame_info[i].h_res == 320 && dev->frame_info[i].v_res == 240) {
+            target_frame_index = i;
+            found_target_res = true;
+            ESP_LOGI(TAG, "✓ Found 320x240 resolution at index %d", i);
+            break;
+        }
+    }
+    if (!found_target_res) {
+        ESP_LOGW(TAG, "320x240 not found, using index 0: %dx%d", 
+                 dev->frame_info[0].h_res, dev->frame_info[0].v_res);
+    }
+    dev->require_frame_index = target_frame_index;
     ESP_LOGI(TAG, "Open the uvc device\n");
     ESP_ERROR_CHECK(uvc_open(dev, dev->require_frame_index));
+
+    // Initialize video decoder (ESP_VIDEO_CODEC)
+    if (init_video_decoder() != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to initialize video decoder");
+        return;
+    }
+
+    // Initialize camera canvas for LCD display
+    init_camera_canvas(dev->frame_info[target_frame_index].h_res, 
+                      dev->frame_info[target_frame_index].v_res);
+
+    // Create frame display task
+    xTaskCreate(frame_display_task, "frame_display", 8192, dev, 4, NULL);
+
+    // Auto-start streaming after initialization
+    ESP_LOGI(TAG, "Auto-starting video stream...");
+    xEventGroupSetBits(dev->event_group, EVENT_START);
 
     bool exit = false;
     while (!exit) 
@@ -227,7 +281,9 @@ void driver_event_cb(const uvc_host_driver_event_data_t *event, void *user_ctx)
                 ESP_LOGI(TAG, "Drop Cam[%d] %s %d*%d@%.1ffps", dev->index, FORMAT_STR[frame_info[i].format], frame_info[i].h_res, frame_info[i].v_res, UVC_DESC_DWFRAMEINTERVAL_TO_FPS(frame_info[i].default_interval));
             }
         }
-        dev->frame_info_num = 8;
+        // Use actual picked frame count instead of hardcoded 8
+        dev->frame_info_num = pick_frame_info_num;
+        ESP_LOGI(TAG, "Total picked MJPEG frames: %d", pick_frame_info_num);
 
         free(frame_info);
         if (pick_frame_info_num == 0) {
@@ -271,6 +327,172 @@ void stream_callback(const uvc_host_stream_event_data_t *event, void *user_ctx)
 
 
 
+// Initialize LVGL canvas for displaying camera frames
+static void init_camera_canvas(int width, int height)
+{
+    if (camera_canvas) {
+        return; // Already initialized
+    }
+
+    // Get frame alignment requirement from decoder
+    uint8_t in_frame_align = 0;
+    uint8_t out_frame_align = 0;
+    esp_video_dec_get_frame_align(video_dec_handle, &in_frame_align, &out_frame_align);
+    ESP_LOGI(TAG, "Decoder requires output frame alignment: %d bytes", out_frame_align);
+
+    // Allocate aligned frame buffers for RGB565 format (2 bytes per pixel) - double buffering
+    uint32_t buffer_size = width * height * sizeof(uint16_t);
+    uint32_t actual_size = 0;
+    
+    // Front buffer (displayed)
+    camera_frame_buffer = (uint16_t *)esp_video_codec_align_alloc(out_frame_align, buffer_size, &actual_size);
+    if (!camera_frame_buffer) {
+        ESP_LOGE(TAG, "Failed to allocate camera frame buffer");
+        return;
+    }
+    memset(camera_frame_buffer, 0, actual_size);
+    
+    // Back buffer (for decoding)
+    camera_frame_buffer_back = (uint16_t *)esp_video_codec_align_alloc(out_frame_align, buffer_size, &actual_size);
+    if (!camera_frame_buffer_back) {
+        ESP_LOGE(TAG, "Failed to allocate camera back buffer");
+        esp_video_codec_free(camera_frame_buffer);
+        camera_frame_buffer = NULL;
+        return;
+    }
+    memset(camera_frame_buffer_back, 0, actual_size);
+    
+    ESP_LOGI(TAG, "Allocated double buffers: size=%u bytes each", actual_size);
+    buffer_size = actual_size;  // Use actual allocated size
+
+    // Setup image descriptor
+    camera_img_dsc.header.always_zero = 0;
+    camera_img_dsc.header.w = width;
+    camera_img_dsc.header.h = height;
+    camera_img_dsc.data_size = buffer_size;
+    camera_img_dsc.header.cf = LV_IMG_CF_TRUE_COLOR;
+    camera_img_dsc.data = (uint8_t *)camera_frame_buffer;
+
+    // Create LVGL canvas/image object
+    if (xSemaphoreTake(lvgl_mux, pdMS_TO_TICKS(1000)) == pdTRUE) {
+        camera_canvas = lv_img_create(lv_scr_act());
+        lv_img_set_src(camera_canvas, &camera_img_dsc);
+        lv_obj_center(camera_canvas);
+        xSemaphoreGive(lvgl_mux);
+        ESP_LOGI(TAG, "Camera canvas initialized: %dx%d", width, height);
+    }
+}
+
+// Initialize ESP_VIDEO_CODEC decoder
+static esp_err_t init_video_decoder(void)
+{
+    if (video_dec_handle) {
+        return ESP_OK; // Already initialized
+    }
+
+    // Register default decoders (includes hardware MJPEG decoder)
+    esp_video_dec_register_default();
+
+    // Configure decoder for MJPEG to RGB565_LE
+    esp_video_dec_cfg_t dec_cfg = {
+        .codec_type = ESP_VIDEO_CODEC_TYPE_MJPEG,
+        .out_fmt = ESP_VIDEO_CODEC_PIXEL_FMT_RGB565_LE,  // Little-endian RGB565 for LVGL
+    };
+
+    // Open decoder (will automatically use HW decoder if available)
+    esp_vc_err_t ret = esp_video_dec_open(&dec_cfg, &video_dec_handle);
+    if (ret != ESP_VC_ERR_OK) {
+        ESP_LOGE(TAG, "Failed to open video decoder: %d", ret);
+        return ESP_FAIL;
+    }
+
+    ESP_LOGI(TAG, "Video decoder initialized successfully");
+    return ESP_OK;
+}
+
+// Decode MJPEG frame and display on LCD using ESP_VIDEO_CODEC with double buffering
+static void decode_and_display_frame(const uint8_t *jpg_data, size_t jpg_size)
+{
+    if (!camera_frame_buffer || !camera_frame_buffer_back) {
+        ESP_LOGW(TAG, "Camera frame buffers not initialized");
+        return;
+    }
+
+    if (!video_dec_handle) {
+        ESP_LOGW(TAG, "Video decoder not initialized");
+        return;
+    }
+
+    // Decode to back buffer (not displayed yet) - no lock needed for decoding
+    esp_video_dec_in_frame_t in_frame = {
+        .data = (uint8_t *)jpg_data,
+        .size = jpg_size,
+    };
+
+    esp_video_dec_out_frame_t out_frame = {
+        .data = (uint8_t *)camera_frame_buffer_back,
+        .size = camera_img_dsc.data_size,
+        .decoded_size = 0,
+    };
+
+    // Decode MJPEG to RGB565 in back buffer
+    esp_vc_err_t ret = esp_video_dec_process(video_dec_handle, &in_frame, &out_frame);
+    if (ret == ESP_VC_ERR_OK) {
+        // Swap RGB565 byte order (LE <-> BE conversion) in back buffer
+        uint16_t *pixels = camera_frame_buffer_back;
+        int pixel_count = camera_img_dsc.header.w * camera_img_dsc.header.h;
+        for (int i = 0; i < pixel_count; i++) {
+            pixels[i] = (pixels[i] >> 8) | (pixels[i] << 8);
+        }
+        
+        // Now lock LVGL only for buffer swap (minimal lock time)
+        if (xSemaphoreTake(lvgl_mux, 0) == pdTRUE) {
+            // Perform atomic buffer swap
+            uint16_t *temp = camera_frame_buffer;
+            camera_frame_buffer = camera_frame_buffer_back;
+            camera_frame_buffer_back = temp;
+            
+            // Update image descriptor to point to new front buffer
+            camera_img_dsc.data = (uint8_t *)camera_frame_buffer;
+            lv_img_set_src(camera_canvas, &camera_img_dsc);
+            
+            // Buffer swap complete - unlock LVGL immediately
+            xSemaphoreGive(lvgl_mux);
+        }
+    } else {
+        ESP_LOGW(TAG, "JPEG decode failed: %d", ret);
+    }
+}
+
+// Task to process frames from queue
+static void frame_display_task(void *arg)
+{
+    uvc_dev_t *dev = (uvc_dev_t *)arg;
+    uvc_host_frame_t *frame = NULL;
+    TickType_t last_frame_time = 0;
+    const TickType_t min_frame_interval = pdMS_TO_TICKS(33); // ~30fps limit
+
+    ESP_LOGI(TAG, "Frame display task started");
+
+    while (1) {
+        if (xQueueReceive(dev->frame_queue, &frame, portMAX_DELAY) == pdTRUE) {
+            TickType_t current_time = xTaskGetTickCount();
+            
+            // Frame rate limiting to prevent tearing
+            if (current_time - last_frame_time >= min_frame_interval) {
+                if (frame && frame->vs_format.format == UVC_VS_FORMAT_MJPEG) {
+                    // Decode and display the MJPEG frame
+                    decode_and_display_frame(frame->data, frame->data_len);
+                    last_frame_time = current_time;
+                }
+            }
+            
+            // Return frame back to UVC driver
+            uvc_host_frame_return(dev->stream, frame);
+        }
+    }
+}
+
 bool frame_callback(const uvc_host_frame_t *frame, void *user_ctx)
 {
 
@@ -280,7 +502,7 @@ bool frame_callback(const uvc_host_frame_t *frame, void *user_ctx)
     case UVC_VS_FORMAT_H264:
     case UVC_VS_FORMAT_H265:
     case UVC_VS_FORMAT_MJPEG:
-        ESP_LOGI(TAG, "Cam[%d] Frame received, size: %d", dev->index, frame->data_len);
+        //ESP_LOGI(TAG, "Cam[%d] Frame received, size: %d", dev->index, frame->data_len);
         break;
     default:
         ESP_LOGI(TAG, "Unsupported format!");

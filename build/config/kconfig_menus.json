@@ -21873,7 +21873,10 @@
                                         "help": "If malloc() is capable of also allocating SPI-connected ram, its allocation strategy will prefer to\nallocate chunks less than this size in internal memory, while allocations larger than this will be\ndone from external RAM. If allocation from the preferred region fails, an attempt is made to allocate\nfrom the non-preferred region instead, so malloc() will not suddenly fail when either internal or\nexternal memory is full.",
                                         "id": "SPIRAM_MALLOC_ALWAYSINTERNAL",
                                         "name": "SPIRAM_MALLOC_ALWAYSINTERNAL",
-                                        "range": null,
+                                        "range": [
+                                            0,
+                                            131072
+                                        ],
                                         "title": "Maximum malloc() size, in bytes, to always put in internal memory",
                                         "type": "int"
                                     },
@@ -21893,7 +21896,10 @@
                                         "help": "Because the external/internal RAM allocation strategy is not always perfect, it sometimes may happen\nthat the internal memory is entirely filled up. This causes allocations that are specifically done in\ninternal memory, for example the stack for new tasks or memory to service DMA or have memory that's\nalso available when SPI cache is down, to fail. This option reserves a pool specifically for requests\nlike that; the memory in this pool is not given out when a normal malloc() is called.\n\nSet this to 0 to disable this feature.\n\nNote that because FreeRTOS stacks are forced to internal memory, they will also use this memory pool;\nbe sure to keep this in mind when adjusting this value.\n\nNote also that the DMA reserved pool may not be one single contiguous memory region, depending on the\nconfigured size and the static memory usage of the app.",
                                         "id": "SPIRAM_MALLOC_RESERVE_INTERNAL",
                                         "name": "SPIRAM_MALLOC_RESERVE_INTERNAL",
-                                        "range": null,
+                                        "range": [
+                                            0,
+                                            262144
+                                        ],
                                         "title": "Reserve this amount of bytes for data that specifically needs to be in DMA or internal memory",
                                         "type": "int"
                                     },
@@ -34946,6 +34952,55 @@
                 "type": "menu"
             },
             {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": "If this option is enabled, part of H264 decoder will be placed into IRAM,\nwhich will increase the size by approximately 22KB.",
+                        "id": "ESP_H264_DECODER_IRAM",
+                        "name": "ESP_H264_DECODER_IRAM",
+                        "range": null,
+                        "title": "Place part of H264 decoder into IRAM",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "ESP_H264_DUAL_TASK",
+                                "help": "The second task core ID for H264 decoder task.",
+                                "id": "ESP_H264_DUAL_TASK_CORE",
+                                "name": "ESP_H264_DUAL_TASK_CORE",
+                                "range": null,
+                                "title": "Task core ID for H264 decoder task",
+                                "type": "int"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "ESP_H264_DUAL_TASK",
+                                "help": "The second task priority for H264 decoder task.",
+                                "id": "ESP_H264_DUAL_TASK_PRIORITY",
+                                "name": "ESP_H264_DUAL_TASK_PRIORITY",
+                                "range": null,
+                                "title": "Task priority for H264 decoder task",
+                                "type": "int"
+                            }
+                        ],
+                        "depends_on": null,
+                        "help": "If this option is enabled, H264 decoder will create two tasks to accelerate the decoding process.",
+                        "id": "ESP_H264_DUAL_TASK",
+                        "name": "ESP_H264_DUAL_TASK",
+                        "range": null,
+                        "title": "Enable dual task for H264 decoder",
+                        "type": "bool"
+                    }
+                ],
+                "depends_on": null,
+                "id": "component-config-esp-h264-configuration",
+                "title": "ESP H264 Configuration",
+                "type": "menu"
+            },
+            {
                 "children": [],
                 "depends_on": null,
                 "help": null,
@@ -37704,6 +37759,100 @@
                 "depends_on": null,
                 "id": "component-config-esp-lvgl-port",
                 "title": "ESP LVGL PORT",
+                "type": "menu"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "IDF_TARGET_ESP32S3 || IDF_TARGET_ESP32P4",
+                                "help": "Enable this option to register software H264 decoder",
+                                "id": "VIDEO_DECODER_SW_H264_SUPPORT",
+                                "name": "VIDEO_DECODER_SW_H264_SUPPORT",
+                                "range": null,
+                                "title": "Support SW H264 Decoder",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32P4 || IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3 || IDF_TARGET_ESP32C2 || IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C5 || IDF_TARGET_ESP32C6",
+                                "help": "Enable this option to register software MJPEG decoder",
+                                "id": "VIDEO_DECODER_SW_MJPEG_SUPPORT",
+                                "name": "VIDEO_DECODER_SW_MJPEG_SUPPORT",
+                                "range": null,
+                                "title": "Support SW MJPEG Decoder",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "SOC_JPEG_DECODE_SUPPORTED",
+                                "help": "Enable this option to register hardware MJPEG decoder",
+                                "id": "VIDEO_DECODER_HW_MJPEG_SUPPORT",
+                                "name": "VIDEO_DECODER_HW_MJPEG_SUPPORT",
+                                "range": null,
+                                "title": "Support HW MJPEG Decoder",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "component-config-video-codec-configuration-video-decoder-configuration",
+                        "title": "Video Decoder Configuration",
+                        "type": "menu"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "IDF_TARGET_ESP32P4",
+                                "help": "Enable this option to register hardware H264 encoder",
+                                "id": "VIDEO_ENCODER_HW_H264_SUPPORT",
+                                "name": "VIDEO_ENCODER_HW_H264_SUPPORT",
+                                "range": null,
+                                "title": "Support HW H264 Encoder",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "IDF_TARGET_ESP32S3 || IDF_TARGET_ESP32P4",
+                                "help": "Enable this option to register software H264 encoder",
+                                "id": "VIDEO_ENCODER_SW_H264_SUPPORT",
+                                "name": "VIDEO_ENCODER_SW_H264_SUPPORT",
+                                "range": null,
+                                "title": "Support SW H264 Encoder",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "SOC_JPEG_ENCODE_SUPPORTED",
+                                "help": "Enable this option to register hardware MJPEG encoder",
+                                "id": "VIDEO_ENCODER_HW_MJPEG_SUPPORT",
+                                "name": "VIDEO_ENCODER_HW_MJPEG_SUPPORT",
+                                "range": null,
+                                "title": "Support HW MJPEG Encoder",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32P4 || IDF_TARGET_ESP32S2 || IDF_TARGET_ESP32S3 || IDF_TARGET_ESP32C2 || IDF_TARGET_ESP32C3 || IDF_TARGET_ESP32C5 || IDF_TARGET_ESP32C6",
+                                "help": "Enable this option to register software MJPEG encoder",
+                                "id": "VIDEO_ENCODER_SW_MJPEG_SUPPORT",
+                                "name": "VIDEO_ENCODER_SW_MJPEG_SUPPORT",
+                                "range": null,
+                                "title": "Support SW MJPEG Encoder",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "component-config-video-codec-configuration-video-encoder-configuration",
+                        "title": "Video Encoder Configuration",
+                        "type": "menu"
+                    }
+                ],
+                "depends_on": null,
+                "id": "component-config-video-codec-configuration",
+                "title": "Video Codec Configuration",
                 "type": "menu"
             },
             {
