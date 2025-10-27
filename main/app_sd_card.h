@@ -39,6 +39,20 @@ bool app_sd_card_is_mounted(void);
  */
 const char* app_sd_card_get_mount_point(void);
 
+/**
+ * @brief Request exclusive access to SDMMC controller for SD card
+ * @note This will pause WiFi/BLE communication temporarily
+ * @return ESP_OK on success
+ */
+esp_err_t app_sd_card_request_access(void);
+
+/**
+ * @brief Release SDMMC controller after SD card operations
+ * @note WiFi/BLE can resume after this call
+ * @return ESP_OK on success
+ */
+esp_err_t app_sd_card_release_access(void);
+
 #ifdef __cplusplus
 }
 #endif

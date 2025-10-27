@@ -2,10 +2,16 @@
 #include "esp_vfs_fat.h"
 #include "sdmmc_cmd.h"
 #include "driver/sdmmc_host.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include "esp_log.h"
 
 #if SOC_SDMMC_IO_POWER_EXTERNAL
 #include "sd_pwr_ctrl_by_on_chip_ldo.h"
+#endif
+
+#ifdef CONFIG_ESP_WIFI_REMOTE_ENABLED
+#include "esp_wifi_remote.h"
 #endif
 
 static const char *TAG = "sd_card";
@@ -15,6 +21,10 @@ static sd_pwr_ctrl_handle_t pwr_ctrl_handle = NULL;
 #endif
 
 #define MOUNT_POINT "/sdcard"
+
+// Status tracking for dynamic switching
+static bool sdmmc_in_use_by_sd = false;
+static bool wifi_was_running = false;
 
 esp_err_t app_sd_card_init(void)
 {
@@ -109,5 +119,53 @@ bool app_sd_card_is_mounted(void)
 const char* app_sd_card_get_mount_point(void)
 {
     return MOUNT_POINT;
+}
+
+esp_err_t app_sd_card_request_access(void)
+{
+    if (sdmmc_in_use_by_sd) {
+        ESP_LOGW(TAG, "SDMMC already in use by SD card");
+        return ESP_OK;
+    }
+
+    ESP_LOGI(TAG, "Requesting exclusive SDMMC access - pausing WiFi/BLE...");
+
+#ifdef CONFIG_ESP_WIFI_REMOTE_ENABLED
+    wifi_mode_t mode;
+    if (esp_wifi_remote_get_mode(&mode) == ESP_OK) {
+        if (mode != WIFI_MODE_NULL) {
+            wifi_was_running = true;
+            ESP_LOGI(TAG, "Pausing WiFi (mode %d)", mode);
+            esp_wifi_remote_stop();  // Stop WiFi to free SDMMC controller
+            vTaskDelay(pdMS_TO_TICKS(200));  // Wait for WiFi to stop
+        } else {
+            wifi_was_running = false;
+        }
+    }
+#endif
+
+    sdmmc_in_use_by_sd = true;
+    return ESP_OK;
+}
+
+esp_err_t app_sd_card_release_access(void)
+{
+    if (!sdmmc_in_use_by_sd) {
+        ESP_LOGW(TAG, "SDMMC not in use by SD card");
+        return ESP_OK;
+    }
+
+    ESP_LOGI(TAG, "Releasing SDMMC controller - resuming WiFi/BLE...");
+
+#ifdef CONFIG_ESP_WIFI_REMOTE_ENABLED
+    if (wifi_was_running) {
+        ESP_LOGI(TAG, "Resuming WiFi...");
+        esp_wifi_remote_start();  // Restart WiFi after SD card operations
+        wifi_was_running = false;
+    }
+#endif
+
+    sdmmc_in_use_by_sd = false;
+    return ESP_OK;
 }
 

@@ -216,6 +216,9 @@ esp_err_t avi_recorder_start(uint32_t width, uint32_t height, uint32_t fps)
         return ESP_ERR_INVALID_STATE;
     }
 
+    // Request exclusive access to SDMMC for recording
+    app_sd_card_request_access();
+
     // Create mutex if not already created
     if (!recorder.mutex) {
         recorder.mutex = xSemaphoreCreateMutex();
@@ -391,18 +394,31 @@ esp_err_t avi_recorder_stop(void)
     ESP_LOGI(TAG, "Finalizing recording: %u frames, %u bytes", 
              recorder.frame_count, recorder.total_bytes);
 
-    // Update RIFF file size
-    fseek(recorder.file, 4, SEEK_SET);
-    uint32_t file_size = recorder.total_bytes + 4096;
-    fwrite(&file_size, 4, 1, recorder.file);
+    // Check if we recorded any frames
+    if (recorder.frame_count == 0) {
+        ESP_LOGW(TAG, "No frames recorded, deleting empty file");
+        fclose(recorder.file);
+        recorder.file = NULL;
+        unlink(recorder.filename);
+        recorder.is_recording = false;
+        recorder.is_stopping = false;
+        xSemaphoreGive(recorder.mutex);
+        app_sd_card_release_access();
+        return ESP_ERR_INVALID_STATE;
+    }
+    
+    // Warn if very few frames (may not play well on all players)
+    if (recorder.frame_count < 3) {
+        ESP_LOGW(TAG, "Very short recording (%u frames), may not play on all players", 
+                 recorder.frame_count);
+    }
 
-    // Update movi LIST size
-    fseek(recorder.file, recorder.movi_list_pos + 4, SEEK_SET);
-    uint32_t movi_size = recorder.total_bytes + 4;
-    fwrite(&movi_size, 4, 1, recorder.file);
-
-    // Update header with correct frame count
-    write_avi_header();
+    // Rewrite entire header with correct frame count and file size
+    // write_avi_header() already seeks to file start internally
+    esp_err_t ret = write_avi_header();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to update AVI header");
+    }
 
     // Flush any remaining data
     fflush(recorder.file);
@@ -413,6 +429,9 @@ esp_err_t avi_recorder_stop(void)
     recorder.is_stopping = false;
 
     xSemaphoreGive(recorder.mutex);
+
+    // Release SDMMC controller - WiFi/BLE can resume
+    app_sd_card_release_access();
 
     ESP_LOGI(TAG, "Recording stopped: %s (%u frames, %u bytes)", 
              recorder.filename, recorder.frame_count, recorder.total_bytes);

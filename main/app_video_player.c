@@ -234,6 +234,9 @@ void video_player_show_file_list(lv_obj_t *parent)
         return;
     }
 
+    // Request SDMMC access to browse SD card files
+    app_sd_card_request_access();
+
     parent_screen = parent;
 
     // NOTE: This function is called from LVGL button callback,
@@ -491,6 +494,9 @@ void video_player_close(void)
             ESP_LOGI(TAG, "UVC stream restarted");
         }
     }
+    
+    // Release SDMMC controller - WiFi/BLE can resume
+    app_sd_card_release_access();
     
     ESP_LOGI(TAG, "Video player closed");
 }
