@@ -3,10 +3,14 @@
 
 #include "esp_err.h"
 #include "usb/uvc_host.h"
+#include "esp_video_dec.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// Shared video decoder handle (used by both UVC and video player)
+extern esp_video_dec_handle_t video_dec_handle;
 
 #define MAX_CAMERAS   2
 #define MAX_RESOLUTION 10

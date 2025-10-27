@@ -1,6 +1,7 @@
 file(GLOB USER_components "components/*.c")
 
 idf_component_register(SRCS "app_lcd.c" "app_main.c" "app_uvc.c" "app_https.c" "app_ble.c" "app_wifi.c" "gatt_svr.c" 
+        "app_sd_card.c" "app_avi_recorder.c" "app_video_player.c"
  		${USER_components}
 		"${IDF_PATH}/components/esp_lcd/rgb/include"
   		"../components/esp_lcd_co5300/include"

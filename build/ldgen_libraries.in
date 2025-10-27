@@ -169,6 +169,7 @@ $<TARGET_FILE:idf::rt>
 $<TARGET_FILE:idf::spiffs>
 $<TARGET_FILE:idf::usb>
 $<TARGET_FILE:idf::lvgl__lvgl>
+$<TARGET_FILE:idf::espressif__avi_player>
 $<TARGET_FILE:idf::espressif__esp_lcd_touch>
 $<TARGET_FILE:__idf_esp_lcd>
 $<TARGET_FILE:__idf_lvgl__lvgl>
@@ -185,6 +186,7 @@ $<TARGET_FILE:idf::espressif__usb_host_uvc>
 $<TARGET_FILE:__idf_usb>
 $<TARGET_FILE:idf::nimble_peripheral_utils>
 $<TARGET_FILE:idf::main>
+$<TARGET_FILE:__idf_espressif__avi_player>
 $<TARGET_FILE:__idf_espressif__esp_lcd_touch>
 $<TARGET_FILE:__idf_espressif__esp_video_codec>
 $<TARGET_FILE:__idf_espressif__usb_host_uvc>

@@ -20,9 +20,9 @@
 #include "esp_video_dec.h"
 #include "esp_video_dec_default.h"
 #include "esp_video_codec_utils.h"
+#include "app_avi_recorder.h"
 
-// External LVGL mutex from app_lcd.c
-extern SemaphoreHandle_t lvgl_mux;
+// External handles and functions from app_lcd.c
 extern esp_lcd_panel_handle_t panel_handle;
 
 // LVGL canvas for displaying camera frame
@@ -32,8 +32,8 @@ static uint16_t *camera_frame_buffer = NULL;
 static uint16_t *camera_frame_buffer_back = NULL;  // Back buffer for double buffering
 static volatile bool buffer_ready = false;  // Flag to indicate buffer is ready to swap
 
-// ESP_VIDEO_CODEC decoder handle
-static esp_video_dec_handle_t video_dec_handle = NULL;
+// ESP_VIDEO_CODEC decoder handle (shared with video player)
+esp_video_dec_handle_t video_dec_handle = NULL;
 
 #define UVC_CAM_NUM             MAX_CAMERAS
 
@@ -374,12 +374,16 @@ static void init_camera_canvas(int width, int height)
     camera_img_dsc.data = (uint8_t *)camera_frame_buffer;
 
     // Create LVGL canvas/image object
-    if (xSemaphoreTake(lvgl_mux, pdMS_TO_TICKS(1000)) == pdTRUE) {
+    ESP_LOGI(TAG, "Attempting to lock LVGL for canvas creation...");
+    if (example_lvgl_lock(1000)) {
+        ESP_LOGI(TAG, "LVGL lock acquired, creating canvas...");
         camera_canvas = lv_img_create(lv_scr_act());
         lv_img_set_src(camera_canvas, &camera_img_dsc);
         lv_obj_center(camera_canvas);
-        xSemaphoreGive(lvgl_mux);
+        example_lvgl_unlock();
         ESP_LOGI(TAG, "Camera canvas initialized: %dx%d", width, height);
+    } else {
+        ESP_LOGE(TAG, "Failed to acquire LVGL lock for canvas creation!");
     }
 }
 
@@ -446,7 +450,7 @@ static void decode_and_display_frame(const uint8_t *jpg_data, size_t jpg_size)
         }
         
         // Now lock LVGL only for buffer swap (minimal lock time)
-        if (xSemaphoreTake(lvgl_mux, 0) == pdTRUE) {
+        if (example_lvgl_lock(0)) {
             // Perform atomic buffer swap
             uint16_t *temp = camera_frame_buffer;
             camera_frame_buffer = camera_frame_buffer_back;
@@ -457,7 +461,7 @@ static void decode_and_display_frame(const uint8_t *jpg_data, size_t jpg_size)
             lv_img_set_src(camera_canvas, &camera_img_dsc);
             
             // Buffer swap complete - unlock LVGL immediately
-            xSemaphoreGive(lvgl_mux);
+            example_lvgl_unlock();
         }
     } else {
         ESP_LOGW(TAG, "JPEG decode failed: %d", ret);
@@ -483,6 +487,14 @@ static void frame_display_task(void *arg)
                 if (frame && frame->vs_format.format == UVC_VS_FORMAT_MJPEG) {
                     // Decode and display the MJPEG frame
                     decode_and_display_frame(frame->data, frame->data_len);
+                    
+                    // If recording, save MJPEG frame (non-blocking - copy to recorder's buffer)
+                    // Note: This should be quick, actual file write happens in recorder's internal task
+                    if (avi_recorder_is_recording()) {
+                        // TODO: Optimize - currently synchronous write may cause lag
+                        avi_recorder_write_frame(frame->data, frame->data_len);
+                    }
+                    
                     last_frame_time = current_time;
                 }
             }
@@ -634,11 +646,17 @@ esp_err_t app_uvc_get_dev_frame_info(int index, uvc_dev_info_t *dev_info)
 find_dev:
     dev_info->index  = dev->index;
     dev_info->if_streaming = dev->if_streaming;
-    dev_info->resolution_count = dev->frame_info_num;
     dev_info->active_resolution = dev->active_frame_index;
-    assert(dev_info->resolution_count <= MAX_RESOLUTION);
+    
+    // Limit resolution count to avoid buffer overflow
+    dev_info->resolution_count = dev->frame_info_num;
+    if (dev_info->resolution_count > MAX_RESOLUTION) {
+        ESP_LOGW(TAG, "Device has %d resolutions, limiting to MAX_RESOLUTION (%d)", 
+                 dev->frame_info_num, MAX_RESOLUTION);
+        dev_info->resolution_count = MAX_RESOLUTION;
+    }
 
-    for (int i = 0; i < dev->frame_info_num; i++) {
+    for (int i = 0; i < dev_info->resolution_count; i++) {
         dev_info->resolution[i].width = dev->frame_info[i].h_res;
         dev_info->resolution[i].height = dev->frame_info[i].v_res;
     }

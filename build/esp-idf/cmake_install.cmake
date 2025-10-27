@@ -559,6 +559,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("E:/workst/RoastSensePRO/build/esp-idf/espressif__cmake_utilities/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("E:/workst/RoastSensePRO/build/esp-idf/espressif__avi_player/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("E:/workst/RoastSensePRO/build/esp-idf/espressif__esp_lcd_touch/cmake_install.cmake")
 endif()
 

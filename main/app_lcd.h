@@ -34,8 +34,8 @@ static void example_lvgl_rounder_cb(struct _lv_disp_drv_t *disp_drv, lv_area_t *
 static void example_lvgl_touch_cb(lv_indev_drv_t *drv, lv_indev_data_t *data);
 static void example_touch_isr_cb(esp_lcd_touch_handle_t tp);
 static void example_increase_lvgl_tick(void *arg);
-static bool example_lvgl_lock(int timeout_ms);
-static void example_lvgl_unlock(void);
+bool example_lvgl_lock(int timeout_ms);
+void example_lvgl_unlock(void);
 void example_lvgl_port_task(void *arg);
 
 

@@ -1,0 +1,32 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.portWin": "COM22",
+  "idf.adapterTargetName": "esp32s3",
+  "idf.openOcdConfigs": [
+    "board/esp32p4-ftdi.cfg"
+  ],
+  "idf.flashType": "UART",
+  "idf.espIdfPathWin": "c:\\Users\\Shine\\esp\\v5.5.1\\esp-idf",
+  "idf.pythonBinPathWin": "D:/esp-idf/v5.0.4/Espressif/python_env/idf5.0_py3.11_env/Scripts/python.exe",
+  "idf.toolsPathWin": "E:\\Espressif",
+  "idf.customExtraPaths": "D:\\esp-idf\\v5.0.4\\Espressif\\tools\\xtensa-esp-elf-gdb\\11.2_20220823\\xtensa-esp-elf-gdb\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\riscv32-esp-elf-gdb\\11.2_20220823\\riscv32-esp-elf-gdb\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\xtensa-esp32-elf\\esp-2022r1-11.2.0\\xtensa-esp32-elf\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\xtensa-esp32s2-elf\\esp-2022r1-11.2.0\\xtensa-esp32s2-elf\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\xtensa-esp32s3-elf\\esp-2022r1-11.2.0\\xtensa-esp32s3-elf\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\riscv32-esp-elf\\esp-2022r1-11.2.0\\riscv32-esp-elf\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\esp32ulp-elf\\2.35_20220830\\esp32ulp-elf\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\cmake\\3.24.0\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\openocd-esp32\\v0.12.0-esp32-20230419\\openocd-esp32\\bin;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\ninja\\1.10.2;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\idf-exe\\1.0.3;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\ccache\\4.6.2\\ccache-4.6.2-windows-x86_64;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\dfu-util\\0.9\\dfu-util-0.9-win64;D:\\esp-idf\\v5.0.4\\Espressif\\tools\\esp-rom-elfs\\20220823",
+  "idf.customExtraVars": {
+    "OPENOCD_SCRIPTS": "D:\\esp-idf\\v5.0.4\\Espressif\\tools\\openocd-esp32\\v0.12.0-esp32-20230419/openocd-esp32/share/openocd/scripts",
+    "IDF_CCACHE_ENABLE": "1",
+    "ESP_ROM_ELF_DIR": "D:\\esp-idf\\v5.0.4\\Espressif\\tools\\esp-rom-elfs\\20220823/",
+    "IDF_TARGET": "esp32p4"
+  },
+  "idf.gitPathWin": "D:/esp-idf/v5.0.4/Espressif/tools/idf-git/2.39.2/cmd/git.exe",
+  "files.associations": {
+    "sdmmc_cmd.h": "c",
+    "unistd.h": "c",
+    "sd_pwr_ctrl_by_on_chip_ldo.h": "c"
+  },
+  "idf.pythonInstallPath": "E:\\Espressif\\tools\\idf-python\\3.11.2\\python.exe",
+  "clangd.path": "d:\\ESP32_5.4\\esp32_tools\\tools\\esp-clang\\16.0.1-fe4f10a809\\esp-clang\\bin\\clangd.exe",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=d:\\ESP32_5.4\\esp32_tools\\tools\\riscv32-esp-elf\\esp-13.2.0_20240530\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe",
+    "--compile-commands-dir=c:\\Users\\19685\\Desktop\\i2s_recorder\\build"
+  ]
+}

@@ -100,8 +100,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-9wihta"
-      binary: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-9wihta"
+      source: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-cba7qs"
+      binary: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-cba7qs"
     cmakeVariables:
       CMAKE_C_FLAGS: "-march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f "
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -111,10 +111,10 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-9wihta'
+        Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-cba7qs'
         
-        Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_9a762
-        [1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe   -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f     -v -o CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj -c E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_e93d0
+        [1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe   -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f     -v -o CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj -c E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe
         Target: riscv32-esp-elf
@@ -122,8 +122,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) 
-        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_9a762.dir/'
-         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1.exe -quiet -v -imultilib rv32imafc_zicsr_zifencei/ilp32f -iprefix E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_9a762.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -march=rv32imafc_zicsr_zifencei_xesppie -version -o C:\\Users\\Shine\\AppData\\Local\\Temp\\ccVvQXk2.s
+        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_e93d0.dir/'
+         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1.exe -quiet -v -imultilib rv32imafc_zicsr_zifencei/ilp32f -iprefix E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_e93d0.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -march=rv32imafc_zicsr_zifencei_xesppie -version -o C:\\Users\\Shine\\AppData\\Local\\Temp\\ccjrwnvV.s
         GNU C17 (crosstool-NG esp-14.2.0_20241119) version 14.2.0 (riscv32-esp-elf)
         	compiled by GNU C version 6.3.0 20170516, GMP version 6.2.1, MPFR version 4.2.1, MPC version 1.2.1, isl version isl-0.26-GMP
         
@@ -140,13 +140,13 @@ events:
          E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/include
         End of search list.
         Compiler executable checksum: bd4b44cd937a52babfee906ad526682a
-        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_9a762.dir/'
-         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as.exe -v --traditional-format -march=rv32imafc_zicsr_zifencei_xesppie -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -o CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj C:\\Users\\Shine\\AppData\\Local\\Temp\\ccVvQXk2.s
+        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_e93d0.dir/'
+         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as.exe -v --traditional-format -march=rv32imafc_zicsr_zifencei_xesppie -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -o CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj C:\\Users\\Shine\\AppData\\Local\\Temp\\ccjrwnvV.s
         GNU assembler version 2.43.1 (riscv32-esp-elf) using BFD version (crosstool-NG esp-14.2.0_20241119) 2.43.1
         COMPILER_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/
         LIBRARY_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib/
-        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.'\x0d
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -v CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj -o cmTC_9a762   && cd ."
+        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.'\x0d
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -v CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj -o cmTC_e93d0   && cd ."
         Using built-in specs.
         COLLECT_GCC=E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe
         COLLECT_LTO_WRAPPER=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe
@@ -157,10 +157,10 @@ events:
         gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) 
         COMPILER_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/
         LIBRARY_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib/
-        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_9a762' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_9a762.'
-         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe -plugin E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll -plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccHUBqb8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_9a762 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc
+        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_e93d0' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_e93d0.'
+         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe -plugin E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll -plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccv1Aqj1.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_e93d0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc
         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00010094
-        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_9a762' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_9a762.'\x0d
+        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_e93d0' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_e93d0.'\x0d
         
       exitCode: 0
   -
@@ -195,10 +195,10 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-9wihta']
+        ignore line: [Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-cba7qs']
         ignore line: []
-        ignore line: [Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_9a762]
-        ignore line: [[1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe   -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f     -v -o CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj -c E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_e93d0]
+        ignore line: [[1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe   -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f     -v -o CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj -c E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe]
         ignore line: [Target: riscv32-esp-elf]
@@ -206,8 +206,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_9a762.dir/']
-        ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1.exe -quiet -v -imultilib rv32imafc_zicsr_zifencei/ilp32f -iprefix E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_9a762.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -march=rv32imafc_zicsr_zifencei_xesppie -version -o C:\\Users\\Shine\\AppData\\Local\\Temp\\ccVvQXk2.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_e93d0.dir/']
+        ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1.exe -quiet -v -imultilib rv32imafc_zicsr_zifencei/ilp32f -iprefix E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_e93d0.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -march=rv32imafc_zicsr_zifencei_xesppie -version -o C:\\Users\\Shine\\AppData\\Local\\Temp\\ccjrwnvV.s]
         ignore line: [GNU C17 (crosstool-NG esp-14.2.0_20241119) version 14.2.0 (riscv32-esp-elf)]
         ignore line: [	compiled by GNU C version 6.3.0 20170516  GMP version 6.2.1  MPFR version 4.2.1  MPC version 1.2.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -224,8 +224,8 @@ events:
         ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: bd4b44cd937a52babfee906ad526682a]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_9a762.dir/']
-        ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as.exe -v --traditional-format -march=rv32imafc_zicsr_zifencei_xesppie -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -o CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj C:\\Users\\Shine\\AppData\\Local\\Temp\\ccVvQXk2.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_e93d0.dir/']
+        ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as.exe -v --traditional-format -march=rv32imafc_zicsr_zifencei_xesppie -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -o CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj C:\\Users\\Shine\\AppData\\Local\\Temp\\ccjrwnvV.s]
         ignore line: [GNU assembler version 2.43.1 (riscv32-esp-elf) using BFD version (crosstool-NG esp-14.2.0_20241119) 2.43.1]
         ignore line: [COMPILER_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/]
@@ -238,8 +238,8 @@ events:
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.'\x0d]
-        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -v CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj -o cmTC_9a762   && cd ."]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.'\x0d]
+        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -v CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj -o cmTC_e93d0   && cd ."]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe]
         ignore line: [COLLECT_LTO_WRAPPER=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe]
@@ -259,13 +259,13 @@ events:
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_9a762' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_9a762.']
-        link line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe -plugin E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll -plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccHUBqb8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_9a762 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc]
+        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_e93d0' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_e93d0.']
+        link line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe -plugin E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll -plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccv1Aqj1.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_e93d0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj -lgcc -lc -lnosys -lc -lgcc]
           arg [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccHUBqb8.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccv1Aqj1.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
           arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
@@ -275,7 +275,7 @@ events:
           arg [-melf32lriscv] ==> ignore
           arg [-X] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_9a762] ==> ignore
+          arg [cmTC_e93d0] ==> ignore
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f]
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f]
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f]
@@ -284,7 +284,7 @@ events:
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib]
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib]
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib]
-          arg [CMakeFiles/cmTC_9a762.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_e93d0.dir/CMakeCCompilerABI.c.obj] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [-lc] ==> lib [c]
           arg [-lnosys] ==> lib [nosys]
@@ -292,7 +292,7 @@ events:
           arg [-lgcc] ==> lib [gcc]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: warning: cannot find entry symbol _start]
         ignore line: [ defaulting to 00010094]
-        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_9a762' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_9a762.'\x0d]
+        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_e93d0' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_e93d0.'\x0d]
         ignore line: []
         ignore line: []
         collapse library dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f] ==> [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f]
@@ -319,8 +319,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-2kor57"
-      binary: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-2kor57"
+      source: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-uainl5"
+      binary: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-uainl5"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f "
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -331,10 +331,10 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-2kor57'
+        Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-uainl5'
         
-        Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_bb9ed
-        [1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe   -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f     -v -o CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj -c E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_bbc30
+        [1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe   -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f     -v -o CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj -c E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe
         Target: riscv32-esp-elf
@@ -342,8 +342,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) 
-        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bb9ed.dir/'
-         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1plus.exe -quiet -v -imultilib rv32imafc_zicsr_zifencei/ilp32f -iprefix E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_bb9ed.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -march=rv32imafc_zicsr_zifencei_xesppie -version -o C:\\Users\\Shine\\AppData\\Local\\Temp\\ccXQzL3e.s
+        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bbc30.dir/'
+         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1plus.exe -quiet -v -imultilib rv32imafc_zicsr_zifencei/ilp32f -iprefix E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_bbc30.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -march=rv32imafc_zicsr_zifencei_xesppie -version -o C:\\Users\\Shine\\AppData\\Local\\Temp\\cc9BXYk7.s
         GNU C++17 (crosstool-NG esp-14.2.0_20241119) version 14.2.0 (riscv32-esp-elf)
         	compiled by GNU C version 6.3.0 20170516, GMP version 6.2.1, MPFR version 4.2.1, MPC version 1.2.1, isl version isl-0.26-GMP
         
@@ -366,13 +366,13 @@ events:
          E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/include
         End of search list.
         Compiler executable checksum: b8daf4944b33b24ed9ecf5a047df93fe
-        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bb9ed.dir/'
-         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as.exe -v --traditional-format -march=rv32imafc_zicsr_zifencei_xesppie -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -o CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\Shine\\AppData\\Local\\Temp\\ccXQzL3e.s
+        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bbc30.dir/'
+         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as.exe -v --traditional-format -march=rv32imafc_zicsr_zifencei_xesppie -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -o CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\Shine\\AppData\\Local\\Temp\\cc9BXYk7.s
         GNU assembler version 2.43.1 (riscv32-esp-elf) using BFD version (crosstool-NG esp-14.2.0_20241119) 2.43.1
         COMPILER_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/
         LIBRARY_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib/\x0d
-        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.'\x0d
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -v CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_bb9ed   && cd ."
+        COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.'\x0d
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -v CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_bbc30   && cd ."
         Using built-in specs.
         COLLECT_GCC=E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe
         COLLECT_LTO_WRAPPER=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe
@@ -383,10 +383,10 @@ events:
         gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) 
         COMPILER_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/
         LIBRARY_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/;E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib/
-        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_bb9ed' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_bb9ed.'
-         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe -plugin E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll -plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccLyfNog.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_bb9ed -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc
+        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_bbc30' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_bbc30.'
+         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe -plugin E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll -plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccf78E3b.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_bbc30 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc
         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00010094
-        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_bb9ed' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_bb9ed.'\x0d
+        COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_bbc30' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_bbc30.'\x0d
         
       exitCode: 0
   -
@@ -427,10 +427,10 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-2kor57']
+        ignore line: [Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-uainl5']
         ignore line: []
-        ignore line: [Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_bb9ed]
-        ignore line: [[1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe   -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f     -v -o CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj -c E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_bbc30]
+        ignore line: [[1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe   -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f     -v -o CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj -c E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe]
         ignore line: [Target: riscv32-esp-elf]
@@ -438,8 +438,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.0 (crosstool-NG esp-14.2.0_20241119) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bb9ed.dir/']
-        ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1plus.exe -quiet -v -imultilib rv32imafc_zicsr_zifencei/ilp32f -iprefix E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_bb9ed.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -march=rv32imafc_zicsr_zifencei_xesppie -version -o C:\\Users\\Shine\\AppData\\Local\\Temp\\ccXQzL3e.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bbc30.dir/']
+        ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/cc1plus.exe -quiet -v -imultilib rv32imafc_zicsr_zifencei/ilp32f -iprefix E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/ -isysroot E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf E:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_bbc30.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -march=rv32imafc_zicsr_zifencei_xesppie -version -o C:\\Users\\Shine\\AppData\\Local\\Temp\\cc9BXYk7.s]
         ignore line: [GNU C++17 (crosstool-NG esp-14.2.0_20241119) version 14.2.0 (riscv32-esp-elf)]
         ignore line: [	compiled by GNU C version 6.3.0 20170516  GMP version 6.2.1  MPFR version 4.2.1  MPC version 1.2.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -462,8 +462,8 @@ events:
         ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: b8daf4944b33b24ed9ecf5a047df93fe]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bb9ed.dir/']
-        ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as.exe -v --traditional-format -march=rv32imafc_zicsr_zifencei_xesppie -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -o CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\Shine\\AppData\\Local\\Temp\\ccXQzL3e.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bbc30.dir/']
+        ignore line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/as.exe -v --traditional-format -march=rv32imafc_zicsr_zifencei_xesppie -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -misa-spec=20191213 -o CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\Shine\\AppData\\Local\\Temp\\cc9BXYk7.s]
         ignore line: [GNU assembler version 2.43.1 (riscv32-esp-elf) using BFD version (crosstool-NG esp-14.2.0_20241119) 2.43.1]
         ignore line: [COMPILER_PATH=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/]
@@ -476,8 +476,8 @@ events:
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib/\x0d]
-        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.'\x0d]
-        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -v CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_bb9ed   && cd ."]
+        ignore line: [COLLECT_GCC_OPTIONS='-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.'\x0d]
+        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -v CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_bbc30   && cd ."]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-g++.exe]
         ignore line: [COLLECT_LTO_WRAPPER=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe]
@@ -497,13 +497,13 @@ events:
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_bb9ed' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_bb9ed.']
-        link line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe -plugin E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll -plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccLyfNog.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_bb9ed -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc]
+        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_bbc30' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_bbc30.']
+        link line: [ E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe -plugin E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll -plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccf78E3b.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc --sysroot=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf -melf32lriscv -X -o cmTC_bbc30 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0 -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib -LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm -lgcc -lc -lnosys -lc -lgcc]
           arg [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../libexec/gcc/riscv32-esp-elf/14.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccLyfNog.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\Shine\\AppData\\Local\\Temp\\ccf78E3b.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
           arg [-plugin-opt=-pass-through=-lnosys] ==> ignore
@@ -513,7 +513,7 @@ events:
           arg [-melf32lriscv] ==> ignore
           arg [-X] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_bb9ed] ==> ignore
+          arg [cmTC_bbc30] ==> ignore
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f]
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f]
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei/ilp32f]
@@ -522,7 +522,7 @@ events:
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/lib]
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/lib]
           arg [-LE:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib] ==> dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../riscv32-esp-elf/usr/lib]
-          arg [CMakeFiles/cmTC_bb9ed.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [CMakeFiles/cmTC_bbc30.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc] ==> lib [gcc]
@@ -532,7 +532,7 @@ events:
           arg [-lgcc] ==> lib [gcc]
         ignore line: [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: warning: cannot find entry symbol _start]
         ignore line: [ defaulting to 00010094]
-        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_bb9ed' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_bb9ed.'\x0d]
+        ignore line: [COLLECT_GCC_OPTIONS='-nostartfiles' '-march=rv32imafc_zicsr_zifencei_xesppie' '-mabi=ilp32f' '-v' '-o' 'cmTC_bbc30' '-misa-spec=20191213' '-march=rv32imafc_zicsr_zifencei_xesppie' '-dumpdir' 'cmTC_bbc30.'\x0d]
         ignore line: []
         ignore line: []
         collapse library dir [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f] ==> [E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/14.2.0/rv32imafc_zicsr_zifencei/ilp32f]
@@ -560,8 +560,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-vr8gis"
-      binary: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-vr8gis"
+      source: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-q7dsr4"
+      binary: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-q7dsr4"
     cmakeVariables:
       CMAKE_C_FLAGS: "-march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f "
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -571,12 +571,12 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-vr8gis'
+        Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-q7dsr4'
         
-        Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_13f01
-        [1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -o CMakeFiles/cmTC_13f01.dir/src.c.obj -c E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-vr8gis/src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f CMakeFiles/cmTC_13f01.dir/src.c.obj -o cmTC_13f01   && cd ."
-        E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: CMakeFiles/cmTC_13f01.dir/src.c.obj: in function `main':
+        Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_2da3f
+        [1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -o CMakeFiles/cmTC_2da3f.dir/src.c.obj -c E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-q7dsr4/src.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f CMakeFiles/cmTC_2da3f.dir/src.c.obj -o cmTC_2da3f   && cd ."
+        E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: CMakeFiles/cmTC_2da3f.dir/src.c.obj: in function `main':
         src.c:(.text+0x6e): warning: pthread_atfork is not implemented and will always fail
         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: src.c:(.text+0x50): warning: pthread_cancel is not implemented and will always fail
         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: src.c:(.text+0x34): warning: pthread_create is not implemented and will always fail
@@ -596,8 +596,8 @@ events:
     checks:
       - "Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS"
     directories:
-      source: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-vto5u5"
-      binary: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-vto5u5"
+      source: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-h34bth"
+      binary: "E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-h34bth"
     cmakeVariables:
       CMAKE_C_FLAGS: "-march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -607,11 +607,11 @@ events:
       variable: "C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS"
       cached: true
       stdout: |
-        Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-vto5u5'
+        Change Dir: 'E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-h34bth'
         
-        Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_a62b2
-        [1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -DC_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS  -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow    -Wformat-signedness -o CMakeFiles/cmTC_a62b2.dir/src.c.obj -c E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-vto5u5/src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f CMakeFiles/cmTC_a62b2.dir/src.c.obj -o cmTC_a62b2   && cd ."
+        Run Build Command(s): E:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_3830a
+        [1/2] E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -DC_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS  -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow    -Wformat-signedness -o CMakeFiles/cmTC_3830a.dir/src.c.obj -c E:/workst/RoastSensePRO/build/CMakeFiles/CMakeScratch/TryCompile-h34bth/src.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && E:\\Espressif\\tools\\riscv32-esp-elf\\esp-14.2.0_20241119\\riscv32-esp-elf\\bin\\riscv32-esp-elf-gcc.exe -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f  -Wall -Wextra -Wwrite-strings -Wmissing-prototypes -Wformat=2 -Wno-format-nonliteral -Wvla -Wlogical-op -Wshadow -nostartfiles -march=rv32imafc_zicsr_zifencei_xesppie -mabi=ilp32f CMakeFiles/cmTC_3830a.dir/src.c.obj -o cmTC_3830a   && cd ."
         E:/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: warning: cannot find entry symbol _start; defaulting to 00010094\x0d
         
       exitCode: 0

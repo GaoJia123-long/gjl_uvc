@@ -1,7 +1,14 @@
 #include "app_lcd.h"
 #include "lv_demos.h"
+#include "app_avi_recorder.h"
+#include "app_sd_card.h"
+#include "app_video_player.h"
 
 #define TAG "app_lcd"
+
+// Forward declarations
+static void record_button_event_cb(lv_event_t *e);
+static void info_button_event_cb(lv_event_t *e);
 
 
 esp_lcd_panel_handle_t panel_handle = NULL;
@@ -9,7 +16,10 @@ esp_lcd_panel_handle_t panel_handle = NULL;
 SemaphoreHandle_t lvgl_mux = NULL;
 static SemaphoreHandle_t touch_mux = NULL;
 esp_lcd_touch_handle_t tp = NULL;
-uint8_t state_touched =0;     
+uint8_t state_touched =0;
+
+// Recording status label
+static lv_obj_t *label_rec_status = NULL;     
 
 #define EXAMPLE_LVGL_TICK_PERIOD_MS    5    //2
 #define EXAMPLE_LVGL_TASK_MAX_DELAY_MS 100   //500
@@ -212,24 +222,33 @@ void init_lcd_lvgl(void *arg)
         // Set a simple background for camera display
         lv_obj_set_style_bg_color(lv_scr_act(), lv_color_black(), 0);
 
-        // Create two blue buttons for color testing
-        lv_obj_t *btn1 = lv_btn_create(lv_scr_act());
-        lv_obj_set_size(btn1, 100, 50);
-        lv_obj_align(btn1, LV_ALIGN_TOP_LEFT, 20, 20);
-        lv_obj_set_style_bg_color(btn1, lv_color_hex(0x0000FF), 0);  // Pure blue
-        lv_obj_t *label1 = lv_label_create(btn1);
-        lv_label_set_text(label1, "Blue1");
-        lv_obj_center(label1);
+        // Create recording control button (left)
+        lv_obj_t *btn_record = lv_btn_create(lv_scr_act());
+        lv_obj_set_size(btn_record, 100, 50);
+        lv_obj_align(btn_record, LV_ALIGN_TOP_LEFT, 20, 20);
+        lv_obj_set_style_bg_color(btn_record, lv_color_hex(0xFF0000), 0);  // Red for record
+        lv_obj_t *label_record = lv_label_create(btn_record);
+        lv_label_set_text(label_record, "REC");
+        lv_obj_center(label_record);
+        lv_obj_add_event_cb(btn_record, record_button_event_cb, LV_EVENT_CLICKED, label_record);
 
-        lv_obj_t *btn2 = lv_btn_create(lv_scr_act());
-        lv_obj_set_size(btn2, 100, 50);
-        lv_obj_align(btn2, LV_ALIGN_TOP_RIGHT, -20, 20);
-        lv_obj_set_style_bg_color(btn2, lv_color_hex(0x0000FF), 0);  // Pure blue
-        lv_obj_t *label2 = lv_label_create(btn2);
-        lv_label_set_text(label2, "Blue2");
-        lv_obj_center(label2);
+        // Create info/file list button (right)
+        lv_obj_t *btn_info = lv_btn_create(lv_scr_act());
+        lv_obj_set_size(btn_info, 100, 50);
+        lv_obj_align(btn_info, LV_ALIGN_TOP_RIGHT, -20, 20);
+        lv_obj_set_style_bg_color(btn_info, lv_color_hex(0x0000FF), 0);  // Blue
+        lv_obj_t *label_info = lv_label_create(btn_info);
+        lv_label_set_text(label_info, "FILES");
+        lv_obj_center(label_info);
+        lv_obj_add_event_cb(btn_info, info_button_event_cb, LV_EVENT_CLICKED, NULL);
 
-        ESP_LOGI(TAG, "Created two blue test buttons");
+        // Create recording status label at bottom
+        label_rec_status = lv_label_create(lv_scr_act());
+        lv_label_set_text(label_rec_status, "Ready");
+        lv_obj_align(label_rec_status, LV_ALIGN_BOTTOM_MID, 0, -10);
+        lv_obj_set_style_text_color(label_rec_status, lv_color_hex(0xFFFFFF), 0);
+
+        ESP_LOGI(TAG, "Created recording control UI");
 
         // �ͷŻ�����
         example_lvgl_unlock();
@@ -383,7 +402,86 @@ static void example_increase_lvgl_tick(void *arg)
     lv_tick_inc(EXAMPLE_LVGL_TICK_PERIOD_MS);
 }
 
-static bool example_lvgl_lock(int timeout_ms)
+// Recording button callback
+static void record_button_event_cb(lv_event_t *e)
+{
+    static uint32_t last_click_time = 0;
+    uint32_t now = xTaskGetTickCount() * portTICK_PERIOD_MS;
+    
+    // Debounce: ignore clicks within 500ms
+    if (now - last_click_time < 500) {
+        ESP_LOGW(TAG, "Button click ignored (debounce)");
+        return;
+    }
+    last_click_time = now;
+    
+    lv_obj_t *btn = lv_event_get_target(e);
+    lv_obj_t *label = (lv_obj_t *)lv_event_get_user_data(e);
+    
+    if (!btn || !label) {
+        ESP_LOGE(TAG, "Invalid button or label");
+        return;
+    }
+    
+    if (avi_recorder_is_recording()) {
+        // Stop recording
+        uint32_t frames = avi_recorder_get_frame_count();
+        esp_err_t ret = avi_recorder_stop();
+        
+        lv_label_set_text(label, "REC");
+        lv_obj_set_style_bg_color(btn, lv_color_hex(0xFF0000), 0);  // Red
+        
+        // Update status
+        if (label_rec_status) {
+            char status[64];
+            if (ret == ESP_OK) {
+                snprintf(status, sizeof(status), "Saved: %lu frames", (unsigned long)frames);
+            } else {
+                snprintf(status, sizeof(status), "Error stopping");
+            }
+            lv_label_set_text(label_rec_status, status);
+        }
+        ESP_LOGI(TAG, "Recording stopped: %lu frames (ret=%d)", (unsigned long)frames, ret);
+    } else {
+        // Check SD card first
+        if (!app_sd_card_is_mounted()) {
+            ESP_LOGE(TAG, "SD card not mounted");
+            if (label_rec_status) {
+                lv_label_set_text(label_rec_status, "Error: No SD card");
+            }
+            return;
+        }
+        
+        // Start recording (320x240 @ 30fps)
+        esp_err_t ret = avi_recorder_start(320, 240, 30);
+        if (ret == ESP_OK) {
+            lv_label_set_text(label, "STOP");
+            lv_obj_set_style_bg_color(btn, lv_color_hex(0x00FF00), 0);  // Green when recording
+            
+            // Update status
+            if (label_rec_status) {
+                lv_label_set_text(label_rec_status, "Recording...");
+            }
+            ESP_LOGI(TAG, "Recording started");
+        } else {
+            ESP_LOGE(TAG, "Failed to start recording (error=%d)", ret);
+            if (label_rec_status) {
+                lv_label_set_text(label_rec_status, "Error: Can't write SD");
+            }
+        }
+    }
+}
+
+// Info/Files button callback
+static void info_button_event_cb(lv_event_t *e)
+{
+    ESP_LOGI(TAG, "Opening file list");
+    
+    // Show video file list
+    video_player_show_file_list(lv_scr_act());
+}
+
+bool example_lvgl_lock(int timeout_ms)
 {
     assert(lvgl_mux && "bsp_display_start must be called first");
 
@@ -391,7 +489,7 @@ static bool example_lvgl_lock(int timeout_ms)
     return xSemaphoreTake(lvgl_mux, timeout_ticks) == pdTRUE;
 }
 
-static void example_lvgl_unlock(void)
+void example_lvgl_unlock(void)
 {
     assert(lvgl_mux && "bsp_display_start must be called first");
     xSemaphoreGive(lvgl_mux);

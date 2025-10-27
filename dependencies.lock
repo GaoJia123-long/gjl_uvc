@@ -1,4 +1,28 @@
 dependencies:
+  espressif/avi_player:
+    component_hash: abe07cedb7e90c4eebfd4cf93825727d5ed341f065bb2e2932d33d648b4474a7
+    dependencies:
+    - name: espressif/cmake_utilities
+      registry_url: https://components.espressif.com
+      require: private
+      version: '*'
+    - name: idf
+      require: private
+      version: '>=4.4'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 2.0.0
+  espressif/cmake_utilities:
+    component_hash: 05165f30922b422b4b90c08845e6d449329b97370fbd06309803d8cb539d79e3
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1'
+    source:
+      registry_url: https://components.espressif.com
+      type: service
+    version: 1.1.1
   espressif/eppp_link:
     component_hash: 41f6519edda527ec6a0553c872ebaf8fc6d3812523c9d4c8d1660ad21c720abe
     dependencies:
@@ -157,6 +181,7 @@ dependencies:
       type: local
     version: '*'
 direct_dependencies:
+- espressif/avi_player
 - espressif/esp_lcd_touch
 - espressif/esp_lvgl_port
 - espressif/esp_video_codec
@@ -165,6 +190,6 @@ direct_dependencies:
 - idf
 - lvgl/lvgl
 - nimble_peripheral_utils
-manifest_hash: 3471f604fa9ae966e05767cfdd6d47a91590070951f1f40513cd3e1bc00c9021
+manifest_hash: 46fa27ebb6f3459ed9ffe782ed14684a9b943605db11708d447e7a537256742e
 target: esp32p4
 version: 2.0.0

@@ -2641,7 +2641,7 @@ CONFIG_WIFI_PROV_STA_ALL_CHANNEL_SCAN=y
 #
 # USB Hub Dual Camera Demo
 #
-CONFIG_PRINTF_CAMERA_USB_DESC=y
+# CONFIG_PRINTF_CAMERA_USB_DESC is not set
 
 #
 # WiFi Settings
@@ -2656,6 +2656,23 @@ CONFIG_SERVER_IP="192.168.4.1"
 CONFIG_ESP_MAXIMUM_RETRY=5
 # end of WiFi Settings
 # end of USB Hub Dual Camera Demo
+
+#
+# AVI Player
+#
+# CONFIG_AVI_PLAYER_DEBUG_INFO is not set
+# end of AVI Player
+
+#
+# CMake Utilities
+#
+# CONFIG_CU_RELINKER_ENABLE is not set
+# CONFIG_CU_DIAGNOSTICS_COLOR_NEVER is not set
+CONFIG_CU_DIAGNOSTICS_COLOR_ALWAYS=y
+# CONFIG_CU_DIAGNOSTICS_COLOR_AUTO is not set
+# CONFIG_CU_GCC_LTO_ENABLE is not set
+# CONFIG_CU_GCC_STRING_1BYTE_ALIGN is not set
+# end of CMake Utilities
 
 #
 # eppp_link
